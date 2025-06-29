@@ -82,7 +82,7 @@ class NotificationListener: NotificationListenerService() {
                         if (messageText != null) {
                             messages.add("Sender: $senderPerson, Message: $messageText")
                             val vault = Vault();
-                            vault.addToConversationBundle(this, "${sbn.packageName}-${personName}", senderPerson.toString(), messageText.toString(), isGroupConversation, senderPerson.toString(), sbn.postTime)
+                            vault.addToConversationBundle(this, "${sbn.packageName}-${personName.replace(Regex("\\s*\\(\\d+ messages\\)\\s*"), "").substringBeforeLast(":").trim()}", senderPerson.toString(), messageText.toString(), isGroupConversation, senderPerson.toString(), sbn.postTime)
                         }
                     }
                 }

@@ -50,6 +50,10 @@ class MainActivity : AppCompatActivity() {
         sbx.settings.domStorageEnabled = true;
         sbx.settings.databaseEnabled = true;
         sbx.settings.builtInZoomControls = false;
+        sbx.settings.mediaPlaybackRequiresUserGesture =false;
+        sbx.settings.allowFileAccess = true;
+
+
 
         sbx.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
