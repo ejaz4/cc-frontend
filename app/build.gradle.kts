@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+
 }
 
 android {
@@ -15,6 +17,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        androidResources {
+            ignoreAssetsPattern = "!.png:!.svg:!.woff:!.jpg:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~:node_modules:.next"
+        }
     }
 
     buildTypes {
@@ -36,7 +42,8 @@ android {
 }
 
 dependencies {
-
+    implementation("org.nanohttpd:nanohttpd:2.3.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
