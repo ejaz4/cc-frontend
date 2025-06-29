@@ -50,9 +50,13 @@ class Vault() {
         sharedPref.edit() {
             putString(conversations, Json.encodeToString(newConversations));
         }
+
+        sharedPref.edit() {
+            putString("$id-status", "unsent")
+        }
     }
 
-    public fun getConversationBundle(ctx: Context, id: String): List<String> {
+    public fun getConversationBundle(ctx: Context): List<String> {
         val sharedPref = ctx.getSharedPreferences("com.ejaz4.cc", Context.MODE_PRIVATE) ?: return listOf()
 
         val conversations = "conversations";
@@ -66,5 +70,11 @@ class Vault() {
         val conversationsSerialised = Json.decodeFromString<List<String>>(conversationsUnserialised)
 
         return conversationsSerialised
+    }
+
+    public fun getConversationState(ctx: Context, id: String): String {
+        val sharedPref = ctx.getSharedPreferences("com.ejaz4.cc", Context.MODE_PRIVATE) ?: return "unknown";
+
+        return sharedPref.getString("$id-status", "unknown") as String;
     }
 }
