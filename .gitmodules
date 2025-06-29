@@ -1,0 +1,3 @@
+[submodule "app/src/main/cc-ui"]
+	path = app/src/main/cc-ui
+	url = https://github.com/ejaz4/cc-ui
